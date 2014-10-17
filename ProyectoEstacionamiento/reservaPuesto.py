@@ -46,7 +46,7 @@ def reservaPuesto(estacionamiento,tiempo,placa,dicPlacaPuesto):
     if puestoEncontrado:
         j = 0
         while j < tiempo[0]:
-            estacionamiento[i][j] = -1
+            estacionamiento[i][j] = 1
             j += 1
         while j < tiempo[1]:
             estacionamiento[i][j] = 2
