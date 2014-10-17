@@ -41,7 +41,18 @@ def desocuparPuesto(placa,tSalida,placaPuesto):
     placaPuesto.pop(placa,None)
     pass
 
-
+'''Navegante: Carlos Farinha
+   Conductor: Karla Alzuro'''
+def IntentarEstacionar(placa, HoraLlegada):
+    hayPuesto = False
+    for j in range(5):
+        if estacionamiento[j][HoraLlegada]==0:
+            placaPuesto = {placa:j}
+            hayPuesto = True
+            for n in range(24-HoraLlegada):
+                estacionamiento[j][n]=1
+    return(hayPuesto)
+                    
 
 if __name__ == '__main__':
     pass
