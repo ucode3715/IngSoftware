@@ -19,7 +19,10 @@ tiempo = (1 , 2)
 reservaPuesto(matriz,tiempo,"asdsad",x)
 
 class TestReservaPuesto(unittest.TestCase):
-
+    
+    ##################################################################
+    ######################     reservaPuesto    ######################
+    ##################################################################
     def testReservaPuestoDicNoInicializado(self):
         self.assertEqual("El diccionario Placa-Puesto no existe",
                          reservaPuesto(matriz,tiempo,"123123",None),"Diccionario no existe" )
