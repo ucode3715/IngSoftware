@@ -9,7 +9,7 @@ import re
 reOwnerName = re.compile('( |[a-zA-Z])*$')
 rePhoneCode = re.compile('0(212|4(1(2|4|6)|2(4|6)))$')
 rePhoneNumber = re.compile('^[1-9][0-9][0-9][0-9][0-9][0-9][0-9]$')
-reEmailAddress = re.compile('[a-zA-Z][_0-9a-zA-Z]*@[a-zA-Z]+(\.[a-zA-Z])+$')
+reEmailAddress = re.compile('[a-zA-Z][_0-9a-zA-Z]*@[a-zA-Z]+(\.[a-zA-Z])+')
 reRif = re.compile('(j|J|v|V|e|E|g|G|p|P)-?[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-?[0-9]$')
 
 def askPhone():
@@ -24,6 +24,12 @@ def askPhone():
     return (parkingPhoneCode,parkingPhone)
 
 def addParking():
+    global numOfParkings
+    parkingPhone2 = None
+    parkingPhoneCode2 = None
+    parkingPhone3 = None
+    parkingPhoneCode3 = None
+    parkingEmailAddr2 = None
     ownerName = input("Por favor introduzca el nombre del Duenho\n")
     while (reOwnerName.match(ownerName) == None):
         ownerName = input("Por favor introduzca un nombre valido (Solo letras)\n")
@@ -63,6 +69,6 @@ def addParking():
             parkingPhoneCode3,parkingPhone3,parkingEmailAddr1,parkingEmailAddr2,rif)
 
 salir = "no"        
-while ((numOfParkings < 6) or (salir == "si")):
+while ((numOfParkings < 6) and (salir != "si")):
     addParking()
     salir = input("Desea salir del programa? (si/no)")
