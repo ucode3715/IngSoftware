@@ -1,6 +1,6 @@
 from django import forms
 
-from models import Estacionamiento
+from models import Estacionamiento,Parametros
 
 class EstacionamientoForm(forms.ModelForm):
     class Meta:

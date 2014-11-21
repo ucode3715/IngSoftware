@@ -42,23 +42,42 @@ class Estacionamiento(models.Model):
 		]
 	)
 	
+	
+
+			
 	def __unicode__(self):
 		return smart_unicode(self.nombre_est)
+	
 
 class Parametros(models.Model):
-	estacionamiento = models.ForeignKey(Estacionamiento)
+	estacionamiento = models.OneToOneField(Estacionamiento)
 	capacidad = models.IntegerField(blank=False,null=False)
-	hEntrada = models.CharField(max_length=64,
-		validators=[RegexValidator
-			    (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
-			     message="Debe una hora valida. Por Ejemplo: 9:00 am "),
-			    ])
-	hSalida = models.CharField(max_length=64,
-				   validators=[RegexValidator
-					       (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
-						message="Debe una hora valida. Por Ejemplo: 9:00 pm "),
-		])
+	# hEntrada = models.CharField(max_length=64,
+	# 	validators=[RegexValidator
+	# 		    (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
+	# 		     message="Debe una hora valida. Por Ejemplo: 9:00 am "),
+	# 		    ])
+	# hSalida = models.CharField(max_length=64,
+	# 			   validators=[RegexValidator
+	# 				       (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
+	# 					message="Debe una hora valida. Por Ejemplo: 9:00 pm "),
+	#])
+	
+	hEntrada = models.TimeField(blank=True,null=True)
+	hSalida = models.TimeField(blank=True,null=True)
+
 	tarifa = models.DecimalField(max_digits=1000,decimal_places=2) 
 	
 	def __unicode__(self):
 		return smart_unicode(self.estacionamiento.nombre_est)
+
+
+
+
+	
+class Reserva(models.Model):
+
+	estacionamiento = models.ForeignKey(Estacionamiento)
+	hEntrada = models.TimeField(blank=True,null=True)
+	hSalida = models.TimeField(blank=True,null=True)
+

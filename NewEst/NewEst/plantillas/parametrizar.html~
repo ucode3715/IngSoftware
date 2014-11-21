@@ -35,8 +35,8 @@
       <div class="blah"   >
 
 	{% if form.errors %}
-	<p style="color: red;">
-          Please correct the error{{ form.errors|pluralize }} below.
+	<p style="color: dark-green;">
+        errore{{ form.errors|pluralize}} en campo(s)
 	</p>
 	{% endif %}
 	
@@ -47,7 +47,7 @@
 	    <li class="list-group-item" >{{field.label}} : {{field}}   </li>
 	    {% endfor %}
 	  </ul>
-	  <input type="submit" value="Entregar" />
+	  <input type="submit" class="btn btn-default" value="Entregar" />
 	</form>
 	
       </div>

@@ -29,4 +29,28 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.CreateModel(
+            name='Parametros',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('capacidad', models.IntegerField()),
+                ('hEntrada', models.CharField(max_length=64, validators=[django.core.validators.RegexValidator(regex=b'(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$', message=b'Debe una hora valida. Por Ejemplo: 9:00 am ')])),
+                ('hSalida', models.CharField(max_length=64, validators=[django.core.validators.RegexValidator(regex=b'(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$', message=b'Debe una hora valida. Por Ejemplo: 9:00 pm ')])),
+                ('tarifa', models.DecimalField(max_digits=1000, decimal_places=2)),
+                ('estacionamiento', models.OneToOneField(to='estacionamientos.Estacionamiento')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Reserva',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('estacionamiento', models.ForeignKey(to='estacionamientos.Estacionamiento')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
     ]

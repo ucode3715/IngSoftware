@@ -38,7 +38,7 @@
 	  {% csrf_token %}
 	  <ul class="list-group blah">
 	    {% for field in form %}
-	    <li class="list-group-item" > {{field.label}} : {{field}}   </li>
+	    <li class="list-group-item" > {{field.label}} : {{field}}   </li> 
 	    {% endfor %}
 	     <input class="btn btn-default " type="submit" value="Entregar" />
 	  </ul>

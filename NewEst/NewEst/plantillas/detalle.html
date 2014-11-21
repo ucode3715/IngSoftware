@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Estacionamiento</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <h1 class="Titulo" ><b>SAGE<b></h1>
+  
+  <body >
+    <ul class="nav nav-pills nav-justified " role="tablist">
+    
+      <li role="presentation"  class="active"><a href="/ests">Estacionamientos</a></li>
+      <li role="presentation"  ><a href="/agregar">Agregar</a></li>
+      <li role="presentation"><a href="/parametrizar">Parametrizar Est</a></li>
+      <li role="presentation"><a href="/reserva">Reserva</a></li>
+      <li role="presentation"><a href="/contacto">Contacto</a></li>
+
+    </ul>
+    <div class="blah">
+    <h2>Estacionamiento {{est.nombre_est}} :</h2>  
+    <table class="table table-bordered">
+        <tr>
+          <th><p class="text-center text-info">Rif</p></th>
+          <td>{{est.rif}}</td>
+        </tr> 
+ 		<tr>
+          <th><p class="text-center text-info">Propietario</p></th>
+           <td>{{est.propietario}}</td>
+        </tr>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 1</p></th>
+           <td>{{est.telf1}}</td>
+        </tr>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 2</p></th>
+           <td>{{est.telf2}}</td>
+        </tr>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 3</p></th>
+           <td>{{est.telf3}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Correo 1</p></th>
+          <td>{{est.email1}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Correo 2</p></th>
+          <td>{{est.email2}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Direccion</p></th>
+          <td>{{est.dir_est}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Capacidad</p></th>
+          <td>{{par.capacidad}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Hora de Entrada</p></th>
+          <td>{{par.hEntrada}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Hora de Salida</p></th>
+          <td>{{par.hSalida}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Tarifa</p></th>
+          <td>{{par.tarifa}}</td>
+        </tr>
+     </table>
+	
+   
+	</div>
+      <div class="footer";>
+	UCode dev 2014.
+      </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

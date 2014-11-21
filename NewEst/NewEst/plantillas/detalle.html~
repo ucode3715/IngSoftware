@@ -28,28 +28,59 @@
       <li role="presentation"><a href="/parametrizar">Parametrizar Est</a></li>
     </ul>
     <div class="blah">
-    <h2>Estacionamientos en el sistema:</h2>  
+    <h2>Estacionamiento {{est.nombre_est}} :</h2>  
     <table class="table table-bordered">
-  	<thead>
         <tr>
           <th><p class="text-center text-info">Rif</p></th>
-          <th><p class="text-center text-info">Nombre</p></th>
+          <td>{{est.rif}}</td>
+        </tr> 
+ 		<tr>
           <th><p class="text-center text-info">Propietario</p></th>
-          <th><p class="text-center text-info">Telefono</p></th>
-          <th><p class="text-center text-info">Correo</p></th>
+           <td>{{est.propietario}}</td>
         </tr>
-    </thead>
-      <tbody>
-      {% for elemento in lista %}
-        <tr>
-          <td>{{elemento.rif}}</td>
-          <td><a href="/detalle/?nombre_est={{elemento.nombre_est}}">{{elemento.nombre_est}}</a></td>
-          <td>{{elemento.propietario}}</td>
-          <td>{{elemento.telf1}}</td>
-          <td>{{elemento.email1}}</td>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 1</p></th>
+           <td>{{est.telf1}}</td>
         </tr>
-        {% endfor %}
-	</table>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 2</p></th>
+           <td>{{est.telf2}}</td>
+        </tr>
+        <tr> 
+        	<th><p class="text-center text-info">Telefono 3</p></th>
+           <td>{{est.telf3}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Correo 1</p></th>
+          <td>{{est.email1}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Correo 2</p></th>
+          <td>{{est.email2}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Direccion</p></th>
+          <td>{{est.dir_est}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Capacidad</p></th>
+          <td>{{par.capacidad}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Hora de Entrada</p></th>
+          <td>{{par.hEntrada}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Hora de Salida</p></th>
+          <td>{{par.hSalida}}</td>
+        </tr>
+        <tr> 
+          <th><p class="text-center text-info">Tarifa</p></th>
+          <td>{{par.tarifa}}</td>
+        </tr>
+     </table>
+	
+   
 	</div>
       <div class="footer";>
 	UCode dev 2014.
@@ -61,4 +92,3 @@
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
-

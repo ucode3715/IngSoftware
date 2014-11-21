@@ -24,8 +24,9 @@
     <ul class="nav nav-pills nav-justified " role="tablist">
     
       <li role="presentation"  ><a href="../">Estacionamientos</a></li>
-      <li role="presentation"  class="active"><a href="../agregar">Agregar</a></li>
+      <li role="presentation"  ><a href="../agregar">Agregar</a></li>
       <li role="presentation"><a href="../parametrizar">Parametrizar Est</a></li>
+      <li role="presentation" class="active" ><a href="../reserva">Reserva</a></li>
       <li role="presentation"><a href="../contacto">Contacto</a></li>
      
     </ul>
@@ -38,10 +39,13 @@
 	  {% csrf_token %}
 	  <ul class="list-group blah">
 	    {% for field in form %}
-	    <li class="list-group-item" > {{field.label}} : {{field}}   </li>
+	    <li class="list-group-item" > {{field.label}} : {{field}}   </li> 
 	    {% endfor %}
 	     <input class="btn btn-default " type="submit" value="Entregar" />
+	     	<br>{{ errort }}
 	  </ul>
+	  
+
 	 
 	</form>
 
