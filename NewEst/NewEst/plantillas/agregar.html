@@ -27,33 +27,24 @@
       <li role="presentation"  class="active"><a href="../agregar">Agregar</a></li>
       <li role="presentation"><a href="../parametrizar">Parametrizar Est</a></li>
       <li role="presentation"><a href="../reserva">Reserva</a></li>
-      <li role="presentation"><a href="../contacto">Contacto</a></li>
-     
     </ul>
          
       
-
       
 	
+
 	<form action="" method="post">
 	  {% csrf_token %}
-	  <ul class="list-group blah">
+	  <ul  class="list-group  blah"  >
 	    {% for field in form %}
-	    <li class="list-group-item" > {{field.label}} : {{field}}   </li> 
+	    <li class="list-group-item" > {{field.label}} : {{field}}
+	    {{field.errors}}
+	     </li>
 	    {% endfor %}
 	     <input class="btn btn-default " type="submit" value="Entregar" />
 	  </ul>
 	 
 	</form>
-
-
-	<div class="blah"   >
-	  {% if form.errors %}
-	  <p style="color: red;">
-            {{ form.errors}}
-	  </p>
-	  {% endif %}
-	</div>
 
 
       <div class="footer";>

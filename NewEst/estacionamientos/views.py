@@ -36,7 +36,7 @@ def reserva(request):
     form = ReservaForm(request.POST)
     if form.is_valid():
         reservas = Reserva.objects.filter(
-            hEntrada__gte = form.cleaned_data["hEntrada"]
+            hEntrada__gte =  form.cleaned_data["hEntrada"]
             ).filter(
             hSalida__gte = form.cleaned_data["hSalida"]
             )  

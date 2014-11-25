@@ -54,4 +54,8 @@
     margin:3px;
     border-radius:6px;
 }
+.errorlist{
+	list-style:none;   
+}
+
 
