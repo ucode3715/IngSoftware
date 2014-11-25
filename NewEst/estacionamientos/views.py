@@ -35,17 +35,23 @@ def done(request):
 def reserva(request):
     form = ReservaForm(request.POST)
     if form.is_valid():
-        reservas = Reserva.objects.filter(
+		horaEntrada = form.cleaned_data["hEntrada"]
+		horaSalida = form.cleaned_data["hSalida"]
+		if ( horaSalida.hour - horaEntrada.hour) < 1:
+			errort = "Debes reservar por al menos 1 hora"
+			return render_to_response("reserva.html",locals(),context_instance = RequestContext(request))
+		reservas = Reserva.objects.filter(
             hEntrada__gte = form.cleaned_data["hEntrada"]
-            ).filter(
-            hSalida__gte = form.cleaned_data["hSalida"]
-            )  
-        est=form.cleaned_data["estacionamiento"]
-        par=Parametros.objects.get(estacionamiento=est)
-        if reservas.count() == par.capacidad : 
-            errort="No hay disponibilidad" 
-        else:
-            save_it = form.save()
+            )
+		reservas = reservas.filter(
+            hSalida__lte = form.cleaned_data["hSalida"]
+            )
+		est=form.cleaned_data["estacionamiento"]
+		par=Parametros.objects.get(estacionamiento=est)
+		if reservas.count() >= par.capacidad : 
+			errort="No hay disponibilidad" 
+		else:
+			save_it = form.save()
     return render_to_response("reserva.html",locals(),context_instance = RequestContext(request))
 
 def detalle(request):
