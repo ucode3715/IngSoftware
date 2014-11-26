@@ -7,13 +7,15 @@ import re
 from estacionamientos.models import Estacionamiento,Reserva,Parametros
 from django.http import HttpResponseRedirect
 from django.utils.encoding import smart_unicode
-from form  import EstacionamientoForm,ParametrosForm,ReservaForm
+from form  import EstacionamientoForm,ParametrosForm,ReservaForm,PagoForm
 
 import re
 def lista_estacionamientos(request):
     estacionamiento = Estacionamiento.objects.all()
     return render_to_response('lista_estacionamientos.html',{'lista':estacionamiento}, context_instance=RequestContext(request))
 
+def pagoexitoso(request):
+    return render_to_response('pagoexitoso.html',locals(), context_instance=RequestContext(request))
 
 def agregar(request):
 	form = EstacionamientoForm(request.POST)
@@ -81,3 +83,12 @@ def detalle(request):
     estacionamiento = Estacionamiento.objects.get(nombre_est=request.GET.get('nombre_est'))
     parametros = Parametros.objects.get(estacionamiento=estacionamiento)
     return render_to_response('detalle.html',{'est':estacionamiento, 'par':parametros}, context_instance=RequestContext(request))
+
+	
+def pago(request):
+    form = PagoForm(request.POST)
+    if form.is_valid():
+        return HttpResponseRedirect("../pagoexitoso/")
+    else:
+        return render_to_response("pagar.html",locals(),context_instance = RequestContext(request))
+	

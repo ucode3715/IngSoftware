@@ -81,3 +81,19 @@ class Reserva(models.Model):
 		ret = ret+" "+smart_unicode(self.hEntrada.strftime("%H:%M"))+" - "
 		ret = ret+smart_unicode(self.hSalida.strftime("%H:%M"))
 		return ret
+		
+class Pago(models.Model):
+	reserva= models.OneToOneField(Reserva)
+	nombre = models.CharField(max_length=64,null = False, blank = False)
+	apellido = models.CharField(max_length=64,null = False, blank = False)
+	cedula = models.IntegerField(max_length=8, null = False, blank = False)
+	tipo_tarjeta = models.CharField(max_length = 12, null = False, blank = False,
+		validators=[RegexValidator
+			(regex='^((v|V)(i|I)(s|S)(t|T)(a|A))|((m|M)(i|I)(s|S)(t|T)(e|E)(r|R))|((x|X)(p|P)(r|R)(e|E)(s|S))$'
+			message="Las tarjetas permitidas son: Vista, Mister y Xpres"),
+		]
+	)
+	nombre_tarjeta = models.CharField(max_length = 40, null = False, blank = False)
+	numero_tarjeta = models.IntegerField(max_length = 16, null = False, blank = False)
+	validacion_tarjeta = models.IntegerField(max_length = 3, null = False, blank = False)
+	monto_pago = models.DecimalField(max_digits=5, decimal_places=2, null = False, blank = False)
