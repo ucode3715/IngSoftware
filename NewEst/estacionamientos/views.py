@@ -76,7 +76,7 @@ def reserva(request):
 			errort="No hay disponibilidad" 
 		else:
 			save_it = form.save()
-			errort="Reserva realizada satisfactoriamente" 
+            return HttpResponseRedirect("../pagar/")
     return render_to_response("reserva.html",locals(),context_instance = RequestContext(request))
 
 def detalle(request):
