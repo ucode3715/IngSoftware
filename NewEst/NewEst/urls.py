@@ -12,5 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^reserva/','estacionamientos.views.reserva'),
     url(r'^detalle/','estacionamientos.views.detalle'),
+    url(r'^pagar/','estacionamientos.views.pago'),
+    url(r'^pagoexitoso/','estacionamientos.views.pagoexitoso'),
 )
 
