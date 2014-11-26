@@ -1,4 +1,4 @@
-
+# coding= utf-8
 from django.db import models
 from django.utils.encoding import smart_unicode
 from django.core.validators import RegexValidator
@@ -9,8 +9,9 @@ from django.core.validators import RegexValidator
 class Estacionamiento(models.Model):
 	propietario = models.CharField(max_length=64,null = False, blank = False, 
 		validators=[RegexValidator
-			(regex='^( |[a-zA-Z])*$',
-			message="Debe ser un nombre de persona"),
+			#(regex='^( |[ñÑáéíóúÁÉÍÓÚa-zA-Z])*$',
+			(regex='^([ a-zA-Z])*$',
+			message="No puede contener numeros,'Ñ', ni caracteres acentuados"),
 		]
 	)
 	nombre_est = models.CharField(max_length=64,null = False, blank = False)
@@ -46,23 +47,15 @@ class Estacionamiento(models.Model):
 
 			
 	def __unicode__(self):
-		return smart_unicode(self.nombre_est)
-	
+		ret = smart_unicode(self.nombre_est)
+		while len(ret) < 20:
+			ret = ret+" ."
+		ret = ret+" ("+smart_unicode(self.propietario)+")"
+		return ret
 
 class Parametros(models.Model):
 	estacionamiento = models.OneToOneField(Estacionamiento)
 	capacidad = models.IntegerField(blank=False,null=False)
-	# hEntrada = models.CharField(max_length=64,
-	# 	validators=[RegexValidator
-	# 		    (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
-	# 		     message="Debe una hora valida. Por Ejemplo: 9:00 am "),
-	# 		    ])
-	# hSalida = models.CharField(max_length=64,
-	# 			   validators=[RegexValidator
-	# 				       (regex='(1[0-2]|[1-9]):[0-5][0-9](\\s)(a|p)m$',
-	# 					message="Debe una hora valida. Por Ejemplo: 9:00 pm "),
-	#])
-	
 	hEntrada = models.TimeField(blank=True,null=True)
 	hSalida = models.TimeField(blank=True,null=True)
 
@@ -81,3 +74,10 @@ class Reserva(models.Model):
 	hEntrada = models.TimeField(blank=True,null=True)
 	hSalida = models.TimeField(blank=True,null=True)
 
+	def __unicode__(self):
+		ret = smart_unicode(self.estacionamiento.nombre_est)
+		while len(ret) < 20:
+			ret = ret+" ."
+		ret = ret+" "+smart_unicode(self.hEntrada.strftime("%H:%M"))+" - "
+		ret = ret+smart_unicode(self.hSalida.strftime("%H:%M"))
+		return ret
